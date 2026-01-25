@@ -1,0 +1,77 @@
+{
+  "_comment": "OpenAlex MCP Server Configuration Template",
+  "_description": "Copy this configuration to your Claude Desktop or other MCP client configuration file",
+
+  "_claude_desktop_config": {
+    "_location": "~/.claude/desktop_config.json (macOS/Linux) or %APPDATA%\\Claude\\desktop_config.json (Windows)",
+    "_instructions": "Add the 'openalex-mcp-server' entry to the 'mcpServers' section in your config file"
+  },
+
+  "example_configuration": {
+    "mcpServers": {
+      "openalex-mcp-server": {
+        "_comment_option1": "Option 1: Run directly with node (requires npm install)",
+        "command": "node",
+        "args": [
+          "E:\\Development\\openAlex-mcp\\src\\index.js"
+        ],
+        "env": {
+          "OPENALEX_API_KEY": "your-api-key-here",
+          "CACHE_ENABLED": "true",
+          "ABSTRACT_MODE": "quick"
+        },
+
+        "_comment_option2": "Option 2: Run with npx (no install required, but slower)",
+        "command": "npx",
+        "args": [
+          "-y",
+          "openalex-mcp-server"
+        ],
+        "env": {
+          "OPENALEX_API_KEY": "your-api-key-here",
+          "CACHE_ENABLED": "true",
+          "ABSTRACT_MODE": "quick"
+        }
+      }
+    }
+  },
+
+  "_environment_variables": {
+    "OPENALEX_API_KEY": {
+      "description": "Optional OpenAlex API key for higher rate limits",
+      "required": false,
+      "how_to_get": "Get your free API key at https://openalex.org/register"
+    },
+    "CACHE_ENABLED": {
+      "description": "Enable/disable local caching of paper metadata",
+      "type": "boolean",
+      "default": "true",
+      "options": ["true", "false"]
+    },
+    "ABSTRACT_MODE": {
+      "description": "Abstract processing mode (currently for future use)",
+      "type": "string",
+      "default": "quick",
+      "options": ["quick", "deep"]
+    }
+  },
+
+  "_complete_example_for_claude_desktop": {
+    "mcpServers": {
+      "openalex-mcp-server": {
+        "command": "node",
+        "args": [
+          "E:\\Development\\openAlex-mcp\\src\\index.js"
+        ],
+        "env": {
+          "OPENALEX_API_KEY": "",
+          "CACHE_ENABLED": "true"
+        }
+      },
+      "pubmed-mcp-server": {
+        "command": "npx",
+        "args": ["-y", "@your-org/pubmed-mcp"]
+      }
+    }
+  }
+}
