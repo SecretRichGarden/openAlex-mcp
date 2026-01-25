@@ -16,8 +16,8 @@
         "Typecheck passes"
       ],
       "priority": 1,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成项目基础结构搭建。创建了 package.json、.env.example、.gitignore、tsconfig.json，安装了必要依赖，创建了目录结构。TypeScript 配置就绪，等待源代码文件。"
     },
     {
       "id": "US-002",
@@ -33,8 +33,8 @@
         "Typecheck passes"
       ],
       "priority": 2,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成工具函数模块。创建了 src/utils.js，实现了所有必要的工具函数。更新了 tsconfig.json 以支持 JavaScript 类型检查。提交哈希: 3b8ec91"
     },
     {
       "id": "US-003",
@@ -48,8 +48,8 @@
         "Typecheck passes"
       ],
       "priority": 3,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成缓存管理器模块。创建了 src/cache-manager.js (204行)，实现了完整的 CacheManager 类，包含自动过期检查和统计功能。提交哈希: ad32123"
     },
     {
       "id": "US-004",
@@ -65,8 +65,8 @@
         "Typecheck passes"
       ],
       "priority": 4,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 OpenAlex API 客户端基础模块。创建了 src/openalex-client.js (85行)，实现了 OpenAlexClient 类和 _request 私有方法，包含完整的错误处理机制。提交哈希: 6f5e5f8"
     },
     {
       "id": "US-005",
