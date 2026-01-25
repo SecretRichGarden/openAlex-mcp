@@ -81,8 +81,8 @@
         "Typecheck passes"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 OpenAlex API 客户端搜索功能。在 OpenAlexClient 类中添加 search(query, options) 方法，支持 query、max_results、page、sort_by 参数和 filters 过滤器。提交哈希: b0883bf"
     },
     {
       "id": "US-006",
@@ -96,8 +96,8 @@
         "Typecheck passes"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 OpenAlex API 客户端获取单篇论文功能。添加 getWork(workId, options) 方法，支持 OpenAlex ID/DOI/PMID 查询。提交哈希: b0883bf"
     },
     {
       "id": "US-007",
@@ -111,8 +111,8 @@
         "Typecheck passes"
       ],
       "priority": 7,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 JSON 格式优化器模块。创建 src/json-optimizer.js (150行)，实现 optimizeWork 和 optimizeSearchResults 函数。提交哈希: b0883bf"
     },
     {
       "id": "US-008",
@@ -129,8 +129,8 @@
         "Typecheck passes"
       ],
       "priority": 8,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 MCP 服务器入口基础框架。创建 src/index.js (603行)，使用 @modelcontextprotocol/sdk 创建 MCP Server 实例。提交哈希: b0883bf"
     },
     {
       "id": "US-009",
@@ -145,8 +145,8 @@
         "Typecheck passes"
       ],
       "priority": 9,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 MCP Tool openalex_search。注册工具并实现搜索功能，返回 meta 和 papers 数组。提交哈希: b0883bf"
     },
     {
       "id": "US-010",
@@ -161,8 +161,8 @@
         "Typecheck passes"
       ],
       "priority": 10,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 MCP Tool openalex_get_work。支持缓存先检，返回优化后的论文详情。提交哈希: b0883bf"
     },
     {
       "id": "US-011",
@@ -178,8 +178,8 @@
         "Typecheck passes"
       ],
       "priority": 11,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 MCP Tool openalex_batch_get_works。添加 batchGetWorks 方法，使用 OR 过滤器批量查询。提交哈希: b0883bf"
     },
     {
       "id": "US-012",
@@ -194,8 +194,8 @@
         "Typecheck passes"
       ],
       "priority": 12,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成全文下载器模块检测和下载功能。创建 src/fulltext-downloader.js (355行)，实现 FulltextDownloader 类。提交哈希: b0883bf"
     },
     {
       "id": "US-013",
@@ -210,8 +210,8 @@
         "Typecheck passes"
       ],
       "priority": 13,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成全文下载器模块文本提取功能。添加 pdf-parse 依赖，实现 extractText 和 extractSections 方法。提交哈希: b0883bf"
     },
     {
       "id": "US-014",
@@ -225,8 +225,8 @@
         "Typecheck passes"
       ],
       "priority": 14,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 MCP Tool openalex_detect_fulltext。检测全文可用性，返回 OA 状态和 URL。提交哈希: b0883bf"
     },
     {
       "id": "US-015",
@@ -241,8 +241,8 @@
         "Typecheck passes"
       ],
       "priority": 15,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 MCP Tool openalex_download_fulltext。下载全文 PDF 并缓存，返回文件状态。提交哈希: b0883bf"
     },
     {
       "id": "US-016",
@@ -257,8 +257,8 @@
         "Typecheck passes"
       ],
       "priority": 16,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 MCP Tool openalex_get_fulltext_sections。获取论文章节内容，支持指定章节提取。提交哈希: b0883bf"
     },
     {
       "id": "US-017",
@@ -273,8 +273,8 @@
         "Typecheck passes"
       ],
       "priority": 17,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 MCP Tool openalex_cache_stats。查看缓存统计，支持清空缓存操作。提交哈希: b0883bf"
     },
     {
       "id": "US-018",
@@ -289,8 +289,8 @@
         "Typecheck passes"
       ],
       "priority": 18,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 MCP Tool openalex_system_check。系统健康检查，测试 API 连接状态。提交哈希: b0883bf"
     },
     {
       "id": "US-019",
@@ -304,8 +304,8 @@
         "Typecheck passes"
       ],
       "priority": 19,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成速率限制和错误重试机制。实现 10 请求/秒速率限制器和指数退避重试（最多5次）。提交哈希: b0883bf"
     },
     {
       "id": "US-020",
@@ -320,8 +320,8 @@
         "Typecheck passes"
       ],
       "priority": 20,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成 MCP 配置文件模板。创建 config/mcp-config.json，包含 node 和 npx 运行配置示例。提交哈希: b0883bf"
     },
     {
       "id": "US-021",
@@ -333,8 +333,8 @@
         "Typecheck passes"
       ],
       "priority": 21,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "已完成项目文档和使用说明。创建 README.md，包含完整的项目介绍、快速开始指南、工具列表和使用示例。提交哈希: b0883bf"
     }
   ]
 }
