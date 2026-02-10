@@ -1,5 +1,6 @@
 # 依赖
 node_modules/
+package-lock.json
 
 # 环境变量
 .env
@@ -19,3 +20,5 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+package-lock.json
+package-lock.json
