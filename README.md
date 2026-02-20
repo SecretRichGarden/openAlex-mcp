@@ -1,5 +1,11 @@
 # OpenAlex + PubMed MCP Server
 
+**发布简介（中文）**
+OpenAlex MCP Server 是一个轻量的 MCP（Model Context Protocol）服务端，提供学术文献检索、论文详情、批量查询、全文检测与下载能力。适合作为 AI Agent 的学术检索基础设施，可与 PubMed MCP 组合形成更完整的生物医学检索链路。
+
+**Release Summary (English)**
+OpenAlex MCP Server is a lightweight MCP (Model Context Protocol) server for academic search. It supports paper search, detailed metadata, batch queries, full-text detection, and downloads. It works great as an AI Agent research backend and can be paired with PubMed MCP for biomedical pipelines.
+
 一个轻量化的 OpenAlex MCP 服务器，可与 PubMed MCP 搭配使用，为 AI Agent 提供快速学术文献检索、详细摘要信息和全文下载能力。
 
 ## 功能特性
@@ -59,6 +65,52 @@ npm start
 npx -y openalex-mcp-server
 ```
 
+**One-Command Run (npx)**
+
+```bash
+npx -y openalex-mcp-server
+```
+
+### 魔搭社区 / Smithery 发布用配置（STDIO）
+
+将以下内容复制到 MCP 客户端配置中即可（包含必填 API Key，适合发布页面展示）：
+
+```json
+{
+  "mcpServers": {
+    "openalex-mcp-server": {
+      "args": [
+        "openalex-mcp-server"
+      ],
+      "command": "npx",
+      "env": {
+        "OPENALEX_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+**ModelScope / Smithery STDIO Config (English)**
+
+Copy this config into your MCP client configuration (API key required):
+
+```json
+{
+  "mcpServers": {
+    "openalex-mcp-server": {
+      "args": [
+        "openalex-mcp-server"
+      ],
+      "command": "npx",
+      "env": {
+        "OPENALEX_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
 ### 配置 Claude Desktop
 
 将以下配置添加到 Claude Desktop 的配置文件中：
@@ -93,6 +145,44 @@ npx -y openalex-mcp-server
       "args": ["-y", "openalex-mcp-server"],
       "env": {
         "OPENALEX_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+### 配置 Cherry / 其他 MCP 客户端
+
+以下为通用 stdio 配置，适用于 Cherry Studio 或其它支持 MCP 的 Agent 工具。将 `command` / `args` 按客户端要求填写即可。
+
+```json
+{
+  "mcpServers": {
+    "openalex-mcp-server": {
+      "command": "npx",
+      "args": ["-y", "openalex-mcp-server"],
+      "env": {
+        "OPENALEX_API_KEY": "your-api-key-here",
+        "CACHE_ENABLED": "true"
+      }
+    }
+  }
+}
+```
+
+**Cherry / Other MCP Clients (English)**
+
+Use the following stdio configuration for Cherry Studio or any MCP-capable client. Copy and adjust `command` / `args` based on your client’s config format.
+
+```json
+{
+  "mcpServers": {
+    "openalex-mcp-server": {
+      "command": "npx",
+      "args": ["-y", "openalex-mcp-server"],
+      "env": {
+        "OPENALEX_API_KEY": "your-api-key-here",
+        "CACHE_ENABLED": "true"
       }
     }
   }
@@ -336,6 +426,14 @@ npx -y openalex-mcp-server
 | `CACHE_ENABLED` | boolean | true | 是否启用本地缓存 |
 | `ABSTRACT_MODE` | string | quick | 摘要处理模式 |
 
+**Environment Variables (English)**
+
+| Variable | Type | Default | Description |
+|------|------|--------|------|
+| `OPENALEX_API_KEY` | string | - | OpenAlex API key (optional) |
+| `CACHE_ENABLED` | boolean | true | Enable local cache |
+| `ABSTRACT_MODE` | string | quick | Abstract processing mode |
+
 ### API 密钥
 
 虽然不需要 API 密钥也可以使用 OpenAlex API，但注册并使用 API 密钥可以获得：
@@ -343,6 +441,10 @@ npx -y openalex-mcp-server
 - 更稳定的服务体验
 
 在 [https://openalex.org/register](https://openalex.org/register) 免费获取 API 密钥。
+
+**API Key (English)**
+
+You can use OpenAlex without a key, but a key increases rate limits and stability. Get a free API key at https://openalex.org/register.
 
 ## 项目结构
 
