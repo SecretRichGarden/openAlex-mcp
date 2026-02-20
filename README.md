@@ -1,6 +1,6 @@
-# OpenAlex MCP Server
+# OpenAlex + PubMed MCP Server
 
-一个轻量化的 OpenAlex MCP 服务器，为 AI Agent 提供快速学术文献检索、详细摘要信息和全文下载能力。
+一个轻量化的 OpenAlex MCP 服务器，可与 PubMed MCP 搭配使用，为 AI Agent 提供快速学术文献检索、详细摘要信息和全文下载能力。
 
 ## 功能特性
 
@@ -47,10 +47,16 @@ CACHE_ENABLED=true
 ABSTRACT_MODE=quick
 ```
 
-### 运行
+### 运行（本地）
 
 ```bash
 npm start
+```
+
+### 运行（npx 一键）
+
+```bash
+npx -y openalex-mcp-server
 ```
 
 ### 配置 Claude Desktop
@@ -66,7 +72,7 @@ npm start
     "openalex-mcp-server": {
       "command": "node",
       "args": [
-        "/path/to/openAlex-mcp/src/index.js"
+        "/path/to/openAlex-mcp/src/cli.js"
       ],
       "env": {
         "OPENALEX_API_KEY": "your-api-key-here",
@@ -302,7 +308,7 @@ npm start
   "mcpServers": {
     "openalex-mcp-server": {
       "command": "node",
-      "args": ["/path/to/openAlex-mcp/src/index.js"],
+      "args": ["/path/to/openAlex-mcp/src/cli.js"],
       "env": {
         "OPENALEX_API_KEY": "your-key"
       }

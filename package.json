@@ -5,12 +5,19 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node src/cli.js",
     "typecheck": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "openalex-mcp-server": "src/cli.js",
+    "openalex-mcp": "src/cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "keywords": ["mcp", "openalex", "academic", "research", "papers"],
-  "author": "",
+  "author": "https://github.com/SecretRichGarden/openAlex-mcp",
   "license": "ISC",
   "repository": {
     "type": "git",
