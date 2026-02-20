@@ -1,6 +1,6 @@
 {
   "name": "openalex-mcp-server",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "轻量化的 OpenAlex MCP 服务器，为 AI Agent 提供快速学术文献检索、详细摘要信息和全文下载能力",
   "main": "src/index.js",
   "type": "module",
