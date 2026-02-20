@@ -1,6 +1,6 @@
 {
   "name": "openalex-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "轻量化的 OpenAlex MCP 服务器，为 AI Agent 提供快速学术文献检索、详细摘要信息和全文下载能力",
   "main": "src/index.js",
   "type": "module",
@@ -19,7 +19,13 @@
   "engines": {
     "node": ">=18"
   },
-  "keywords": ["mcp", "openalex", "academic", "research", "papers"],
+  "keywords": [
+    "mcp",
+    "openalex",
+    "academic",
+    "research",
+    "papers"
+  ],
   "author": "https://github.com/SecretRichGarden/openAlex-mcp",
   "license": "ISC",
   "repository": {
