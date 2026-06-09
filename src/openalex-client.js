@@ -228,7 +228,7 @@ export class OpenAlexClient {
     } = options;
 
     // 构建 select 参数
-    const selectParts = ['id', 'title', 'publication_year', 'type', 'cited_by_count', 'doi', 'pmid', 'primary_location', 'open_access', 'best_oa_location', 'referenced_works', 'concepts'];
+    const selectParts = ['id', 'title', 'publication_year', 'type', 'cited_by_count', 'doi', 'ids', 'primary_location', 'open_access', 'best_oa_location', 'referenced_works', 'concepts'];
 
     if (include_abstract) {
       selectParts.push('abstract_inverted_index');
@@ -285,7 +285,7 @@ export class OpenAlexClient {
     } = options;
 
     // 构建 select 参数
-    const selectParts = ['id', 'title', 'publication_year', 'type', 'cited_by_count', 'doi', 'pmid', 'primary_location', 'open_access', 'concepts'];
+    const selectParts = ['id', 'title', 'publication_year', 'type', 'cited_by_count', 'doi', 'ids', 'primary_location', 'open_access', 'concepts'];
 
     if (include_abstract) {
       selectParts.push('abstract_inverted_index');

@@ -123,22 +123,26 @@ export class FulltextDownloader {
       }
     }
 
+    // 将 PMC 文章页面 URL 转换为 PDF 直链
+    const pdfUrl = this._resolvePdfUrl(oaUrl);
+
     try {
       // 下载 PDF
-      const response = await fetch(oaUrl, {
+      const response = await fetch(pdfUrl, {
         headers: {
           'User-Agent': 'openalex-mcp-server/1.0.0'
-        }
+        },
+        redirect: 'follow'
       });
 
       if (!response.ok) {
         throw new Error(`下载失败: HTTP ${response.status} ${response.statusText}`);
       }
 
-      // 检查 Content-Type
+      // 校验 Content-Type，确保是 PDF
       const contentType = response.headers.get('content-type');
-      if (!contentType || !contentType.includes('application/pdf')) {
-        console.warn(`警告: URL 可能不是 PDF 文件: ${contentType}`);
+      if (contentType && !contentType.includes('application/pdf') && !contentType.includes('application/octet-stream')) {
+        console.warn(`警告: URL 返回的不是 PDF 文件: ${contentType}`);
       }
 
       // 保存到缓存
@@ -163,6 +167,21 @@ export class FulltextDownloader {
         error: errorMessage
       };
     }
+  }
+
+  /**
+   * 将 OA URL 转换为可直接下载 PDF 的 URL
+   * @private
+   * @param {string} url - 原始 OA URL
+   * @returns {string} PDF 直链 URL
+   */
+  _resolvePdfUrl(url) {
+    // PMC 文章页面 → Europe PMC PDF 直链（NCBI PMC 有 reCAPTCHA 反爬，Europe PMC 无此限制）
+    const pmcMatch = url.match(/ncbi\.nlm\.nih\.gov\/pmc\/articles\/(?:PMC)?(\d+)/);
+    if (pmcMatch) {
+      return `https://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC${pmcMatch[1]}&blobtype=pdf`;
+    }
+    return url;
   }
 
   /**
