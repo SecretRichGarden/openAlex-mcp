@@ -23,7 +23,7 @@ export function optimizeWork(rawWork) {
     id: simplifyOpenAlexId(rawWork.id),
     title: rawWork.title || '',
     doi: rawWork.doi || null,
-    pmid: rawWork.pmid || null,
+    pmid: rawWork.ids?.pmid || null,
     publication_year: rawWork.publication_year || null,
     type: rawWork.type || null,
     cited_by_count: rawWork.cited_by_count || 0,
