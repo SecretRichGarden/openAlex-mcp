@@ -95,6 +95,11 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
                 type: {
                   type: 'string',
                   description: 'Filter by document type (e.g., "article", "conference-paper")'
+                },
+                search_field: {
+                  type: 'string',
+                  enum: ['default', 'title'],
+                  description: 'Where to match the query. "default" (full-text: title/abstract/fulltext) is recommended for topic search; "title" restricts to title-only matching, which returns 0 for most multi-word queries'
                 }
               }
             }

@@ -3,8 +3,10 @@
  * 提供与 OpenAlex API 交互的基础功能
  */
 
-import fetch from 'node-fetch';
 import { sleep } from './utils.js';
+
+// Use native fetch (Node.js 18+) instead of node-fetch for better network compatibility
+const fetch = globalThis.fetch;
 
 /**
  * OpenAlex API 客户端类
@@ -188,8 +190,23 @@ export class OpenAlexClient {
       params.sort = sort_by;
     }
 
-    // 添加过滤器
-    const filterParts = [`title.search:${query}`];
+    // 检索词与过滤器
+    //
+    // 【修复 2026-11-24】原来把 query 塞进 `filter=title.search:${query}`，
+    // 该过滤器的语义是「标题必须同时包含下列所有词」，多词查询几乎必然返回 0 条：
+    //   实测 filter=title.search:telocytes CD34 PDGFRA marker identification -> count 0
+    //        同一批词走顶层 search 参数                                -> count 3373
+    // 顶层 `search` 覆盖标题/摘要/全文，是主题检索的正确入口。
+    // 若确实只想搜标题，显式传 `filters.search_field = 'title'` 走原来的过滤器。
+    const q = (query === null || query === undefined) ? '' : String(query).trim();
+    const filterParts = [];
+    if (q) {
+      if (filters.search_field === 'title') {
+        filterParts.push(`title.search:${q}`);
+      } else {
+        params.search = q;
+      }
+    }
     if (filters.publication_year) {
       filterParts.push(`publication_year:${filters.publication_year}`);
     }
@@ -200,7 +217,9 @@ export class OpenAlexClient {
       filterParts.push(`type:${filters.type}`);
     }
 
-    params.filter = filterParts.join(',');
+    if (filterParts.length > 0) {
+      params.filter = filterParts.join(',');
+    }
 
     // 使用 select 参数只获取必要字段
     params.select = 'id,title,authorships,publication_year,primary_location,cited_by_count,open_access,doi,concepts';

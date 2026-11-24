@@ -3,8 +3,10 @@
  * 提供论文全文下载、文本提取和章节识别功能
  */
 
-import fetch from 'node-fetch';
 import { promises as fs } from 'fs';
+
+// Use native fetch (Node.js 18+) instead of node-fetch for better network compatibility
+const fetch = globalThis.fetch;
 import path from 'path';
 import { fileURLToPath } from 'url';
 import pdfParse from 'pdf-parse';
@@ -147,7 +149,8 @@ export class FulltextDownloader {
 
       // 保存到缓存
       await this._ensureCacheDirExists();
-      const buffer = await response.buffer();
+      const arrayBuffer = await response.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
       await fs.writeFile(pdfPath, buffer);
 
       return {
